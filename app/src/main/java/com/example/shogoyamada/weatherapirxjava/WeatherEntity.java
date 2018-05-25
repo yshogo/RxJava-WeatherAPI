@@ -5,7 +5,7 @@ import java.util.List;
 public class WeatherEntity {
 
     public String base;
-    public List<Weather> weatherList;
+    public List<Weather> weather;
 
     public class Weather {
         public int id;

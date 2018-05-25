@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onNext(WeatherEntity weatherEntity) {
                         dialog.dismiss();
-                        List<WeatherEntity.Weather> list = weatherEntity.weatherList;
+                        List<WeatherEntity.Weather> list = weatherEntity.weather;
                         ((TextView)findViewById(R.id.whether)).setText(list.get(0).main);
                     }
                 });
