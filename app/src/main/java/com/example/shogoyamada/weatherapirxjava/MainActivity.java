@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setTitle("読み込み中");
         dialog.show();
-        adapter.create(WeatherApi.class).get("weathr", "Tokyo,jp")
+        adapter.create(WeatherApi.class).get("weather", "Tokyo,jp")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<WeatherEntity>() {
