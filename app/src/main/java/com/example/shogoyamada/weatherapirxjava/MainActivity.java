@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
 
 import java.util.Date;
+import java.util.List;
 
 import retrofit.RestAdapter;
 import retrofit.android.AndroidLog;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setTitle("読み込み中");
         dialog.show();
-        adapter.create(WeatherApi.class).get("weather", "Tokyo,jp")
+        adapter.create(WeatherApi.class).get()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<WeatherEntity>() {
@@ -64,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onNext(WeatherEntity weatherEntity) {
                         dialog.dismiss();
-                        ((TextView)findViewById(R.id.whether)).setText(weatherEntity.weatherList.get(0).main);
+                        List<WeatherEntity.Weather> list = weatherEntity.weatherList;
+                        ((TextView)findViewById(R.id.whether)).setText(list.get(0).main);
                     }
                 });
     }

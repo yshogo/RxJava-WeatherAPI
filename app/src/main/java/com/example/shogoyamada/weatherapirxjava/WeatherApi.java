@@ -2,12 +2,11 @@ package com.example.shogoyamada.weatherapirxjava;
 
 
 import retrofit.http.GET;
-import retrofit.http.Path;
-import retrofit.http.Query;
 import rx.Observable;
 
 public interface WeatherApi {
 
-    @GET("/data/2.5/{name}")
-    public Observable<WeatherEntity> get(@Path("name") String name, @Query("q") String q);
+    String API_KEY = "b6625cf8cacf050284c58c63bcc269a2";
+    @GET("/data/2.5/weather?q=London,uk&appid=" + API_KEY)
+    public Observable<WeatherEntity> get();
 }
